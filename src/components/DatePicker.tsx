@@ -20,7 +20,7 @@ export default function DatePicker() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Stack spacing={3}>
         <DesktopDatePicker
-          label="Date desktop"
+          label="Date ddddd"
           inputFormat="MM/DD/YYYY"
           value={value}
           onChange={handleChange}
