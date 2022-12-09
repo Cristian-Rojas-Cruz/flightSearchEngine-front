@@ -1,39 +1,53 @@
 import * as React from 'react';
 import dayjs, { Dayjs } from 'dayjs';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
+import { Stack, TextField, Container } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
 export default function DatePicker() {
-  const [value, setValue] = React.useState<Dayjs | null>(
-    dayjs('2014-08-18T21:11:54'),
+  const [initial, setInitial] = React.useState<Dayjs | null>(
+    dayjs(Date()),
+  );
+  const [final, setFinal] = React.useState<Dayjs | null>(
+    dayjs(Date()),
   );
 
-  const handleChange = (newValue: Dayjs | null) => {
-    setValue(newValue);
+  const handleChangeInitial = (newDateInitial: Dayjs | null) => {
+    setInitial(newDateInitial);
+  };
+  const handleChangeFinal = (newDateFinal: Dayjs | null) => {
+    setFinal(newDateFinal);
   };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack spacing={3}>
-        <DesktopDatePicker
-          label="Date ddddd"
-          inputFormat="MM/DD/YYYY"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
-        />
-        <MobileDatePicker
-          label="Date mobile"
-          inputFormat="MM/DD/YYYY"
-          value={value}
-          onChange={handleChange}
-          renderInput={(params) => <TextField {...params} />}
-        />
-      </Stack>
-    </LocalizationProvider>
+    <Container class="inputs">
+      {/* IDA */}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Stack spacing={2}>
+          <DesktopDatePicker
+            label="Fecha de Ida"
+            inputFormat="DD/MM/YYYY"
+            value={initial}
+            onChange={handleChangeInitial}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </Stack>
+      </LocalizationProvider>
+
+      {/* VUELTA */}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Stack spacing={2}>
+          <DesktopDatePicker
+            label="Fecha de Vuelta"
+            inputFormat="DD/MM/YYYY"
+            value={final}
+            onChange={handleChangeFinal}
+            renderInput={(params) => <TextField {...params} />}
+          />
+        </Stack>
+      </LocalizationProvider>
+      {console.log("aqui",final)}
+    </Container>
   );
 }

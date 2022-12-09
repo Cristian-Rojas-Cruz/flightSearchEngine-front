@@ -1,0 +1,49 @@
+// @import 'base/index';
+
+// Colors
+.color {
+  &-primary {
+    color: $theme-green !important;
+  }
+  &-white {
+    color: $white !important;
+  }
+}
+
+
+// Backgrounds
+.bg-primary {
+  background-color: $theme-green;
+}
+
+// Borders
+.border-color {
+  &-primary {
+    border-color: $theme-green;
+  }
+}
+
+.fz-20{
+  font-size: 20px !important;
+}
+
+.fw-6{
+  font-weight: 600 !important;
+}
+
+
+
+.img_home{
+  // width: 200px;
+  img{
+
+  }
+}
+
+.inputs{
+  display: flex;
+  flex-direction: inherit;
+  border: 1px solid $black;
+  border-radius: 10px;
+  position: absolute;
+}
