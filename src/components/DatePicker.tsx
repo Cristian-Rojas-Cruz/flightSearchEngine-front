@@ -1,6 +1,6 @@
 import * as React from 'react';
 import dayjs, { Dayjs } from 'dayjs';
-import { Stack, TextField, Container } from '@mui/material';
+import { Stack, TextField, Grid } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -20,11 +20,21 @@ export default function DatePicker() {
     setFinal(newDateFinal);
   };
 
+  const containerCenter = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    border: 1,
+    borderColor: 'common.black',
+    borderRadius: '10px'
+  }
+
   return (
-    <Container class="inputs">
+    <Grid container sx={containerCenter} spacing={2}>
+      <Grid item xs={6}>
       {/* IDA */}
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Stack spacing={2}>
+      <LocalizationProvider dateAdapter={AdapterDayjs} fullWidth>
+        <Stack spacing={1}>
           <DesktopDatePicker
             label="Fecha de Ida"
             inputFormat="DD/MM/YYYY"
@@ -34,10 +44,12 @@ export default function DatePicker() {
           />
         </Stack>
       </LocalizationProvider>
+      </Grid>
 
       {/* VUELTA */}
+      <Grid item xs={6}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Stack spacing={2}>
+        <Stack spacing={1}>
           <DesktopDatePicker
             label="Fecha de Vuelta"
             inputFormat="DD/MM/YYYY"
@@ -47,7 +59,9 @@ export default function DatePicker() {
           />
         </Stack>
       </LocalizationProvider>
+      </Grid>
+
       {console.log("aqui",final)}
-    </Container>
+    </Grid>
   );
 }
