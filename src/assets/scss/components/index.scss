@@ -1,13 +1,2 @@
-.mapStyles{
-    position: fixed;
-    width: 68%;
-    top: 0%;
-}
-.rsm-geographies path:focus{
-    fill: red !important;
-    outline: transparent;
-}
-
-.selectCountry:hover{
-    fill: red;
-}
+@import "./_map";
+@import "./_cards";

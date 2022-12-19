@@ -1,0 +1,15 @@
+.mapStyles{
+    position: fixed;
+    width: 68%;
+    top: 0%;
+}
+.rsm-geographies path:focus{
+    // fill: $beige !important;
+    stroke: $light-green;
+    outline: transparent;
+}
+
+.selectCountry:hover{
+    fill: $beige;
+    stroke: $light-green;
+}

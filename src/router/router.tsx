@@ -1,5 +1,5 @@
-import { Route, Routes, Navigate  } from "react-router-dom";
-import { Login, Home, MapView } from "../views";
+import { Route, Routes } from "react-router-dom";
+import { Home, MapView, Flight, ActionCrud } from "../views";
 
 const RouterView: React.FC = () => (
     <Routes>
@@ -9,13 +9,15 @@ const RouterView: React.FC = () => (
         {/* 3000-20000 */}
         <Route path="/map/:price" element={<MapView />}/>
         {/* DD/MM/YY 14122022-16122023  */}
-        <Route path="/map/:price/:date" element={<MapView />}/>
+        <Route path="/map/:price/:date/:place" element={<MapView />}/>
         {/* id  */}
-        {/* <Route path="/cards/:price/:date/:place" element={<MapView />}/> */}
+        <Route path="/flights/:price/:date/:place" element={<Flight />}/>
 
-
+        {/* ActionCrud */}
+        <Route path="/flight/card/" element={<ActionCrud />}/>
+        {/* <Route path="/flight/card/" element={<ActionCrud />}/> */}
         {/* /:id */}
-        <Route path="/*" element={<Navigate to="/" />}/>
+        {/* <Route path="/*" element={<Navigate to="/" />}/> */}
     </Routes>
 );
 
