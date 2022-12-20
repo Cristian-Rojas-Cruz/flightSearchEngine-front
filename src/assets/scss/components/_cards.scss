@@ -1,0 +1,14 @@
+#errorFecha, #errorPrice, #errorIata{
+    color: red;
+    display: none;
+}
+.card{
+    position:relative;
+    &__collapsable{
+        position:absolute;
+        bottom: 0px;
+        transform: translate(70px, calc(100% - 51px));
+        background-color: $light-green !important;
+        z-index: 1;
+    }
+}
