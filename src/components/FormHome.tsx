@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+import { Dayjs } from 'dayjs';
 import { Stack, TextField, Typography, Grid, Button, MenuItem, InputLabel, FormControl } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -37,7 +38,6 @@ export default function FormHome() {
   const finalPriceChange = (event: SelectChangeEvent) => {
     setFinalPrice(event.target.value as string);
   };
-
   const handleNavigate = (event: any) => {
     event.preventDefault();
     let toastDate = document.getElementById("errorFecha");
@@ -67,22 +67,29 @@ export default function FormHome() {
     if(initialPrice <= finalPrice && initialDate <= finalDate && iata !== ""){
       navigate('/map/' + initialPrice + "-" + finalPrice + "/" + initialDate + "-" + finalDate+'/'+iata);
     }
-  }
+  };
   const flex = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
-  }
+  };
   const input = {
     ...flex,
     border: 1,
     borderColor: 'common.black',
     borderRadius: '10px',
-  }
+  };
   const inputIata = {
     ...input,
     pt: 0
-  }
+  };
+
+  // useEffect(() => {
+  //   axios.get(`https://jsonplaceholder.typicode.com/users`)
+  //     .then((res) => {
+  //     setIata(res.data);
+  //   })
+  // });
 
   return (
     <form onSubmit={(event) => {handleNavigate(event)}}>

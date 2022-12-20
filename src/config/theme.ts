@@ -35,18 +35,18 @@ const theme = createTheme({
             fontSize: "1rem",
             fontWeight: 600
         },
-        p: {
-            fontFamily: "Arial",
-            fontSize: "1.1rem",
-            fontWeight: 400
-        }
+        // p: {
+        //     fontFamily: "Arial",
+        //     fontSize: "1.1rem",
+        //     fontWeight: 400
+        // },
     },
     components: {
         MuiContainer: {
             styleOverrides: {
-                label: {
-                    border:0,
-                },
+                // label: {
+                //     border:0,
+                // },
                 maxWidthXl: {
                     maxWidth: '100% !important',
                 },
