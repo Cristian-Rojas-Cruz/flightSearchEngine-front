@@ -1,25 +1,25 @@
 export interface Flight {
     _id: string,
-    fecha: Date,
-    startingAirport: string,
-    destinationAirport: string,
-    price: number,
+    FlightDate: number,
+    StartingAirport: string,
+    DestinationAirport: string,
+    baseFare: number,
     seatsRemaining: number,
     characteristics: FlightCharacteristics
 }
 
 interface FlightCharacteristics{
-    isEconomy: boolean,
-    isRefundable: boolean,
-    isNonStop: boolean,
+    IsEconomy: boolean,
+    IsRefundable: boolean,
+    IsNonStop: boolean,
 }
 
 export interface Place {
     _id: string,
     country: string,
-    city: string,
+    City: string,
     iata: string,
-    coordinates: Coordinate
+    Coordinates: Coordinate
 }
 export interface Coordinate{
     longitude: number,

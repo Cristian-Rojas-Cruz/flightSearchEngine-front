@@ -33,10 +33,6 @@ const ActionCrud = () => {
         }
     }
 
-    useEffect(() =>{
-        console.log("ihdsjlk")
-      });
-
   return (
     <form onSubmit={(event) => {handleNavigate(event)}}>
     <Box>

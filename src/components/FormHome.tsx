@@ -7,7 +7,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { useNavigate } from "react-router-dom";
-import { placesFaker } from '../utils/faker/PlaceFaker';
+import { Place } from '../utils/models/Flight';
+import axios from 'axios';
 
 export default function FormHome() {
   const navigate = useNavigate();
@@ -15,7 +16,17 @@ export default function FormHome() {
   const [finalDate, setFinalDate] = React.useState(Date.now());
   const [initialPrice, setInitialPrice] = React.useState("0");
   const [finalPrice, setFinalPrice] = React.useState("300");
+  const [places, setPlaces] = React.useState<Place[]>([]);
+
   const [iata, setIata] = React.useState('');
+
+  const getPlaces = async () => {
+    let res = await axios.get('https://localhost:44341/api/Place');
+    setPlaces(res.data);
+  }
+  useEffect(() =>{
+    getPlaces();
+  });
 
   const handleChangeIATA = (event: SelectChangeEvent) => {
     setIata(event.target.value);
@@ -65,7 +76,7 @@ export default function FormHome() {
       }
     }
     if(initialPrice <= finalPrice && initialDate <= finalDate && iata !== ""){
-      navigate('/map/' + initialPrice + "-" + finalPrice + "/" + initialDate + "-" + finalDate+'/'+iata);
+      navigate('/map/' + initialPrice + "-" + finalPrice + "/" + initialDate/1000 + "-" + finalDate/1000+'/'+iata);
     }
   };
   const flex = {
@@ -186,6 +197,11 @@ export default function FormHome() {
                     <MenuItem value={200}>200</MenuItem>
                     <MenuItem value={250}>250</MenuItem>
                     <MenuItem value={300}>300</MenuItem>
+                    <MenuItem value={350}>350</MenuItem>
+                    <MenuItem value={400}>400</MenuItem>
+                    <MenuItem value={450}>450</MenuItem>
+                    <MenuItem value={500}>500</MenuItem>
+                    <MenuItem value={550}>550</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -208,7 +224,7 @@ export default function FormHome() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  {placesFaker.map((place:any, index:number) =>  {
+                  {places.map((place:Place, index:number) =>  {
                     return(
                       <MenuItem key={index} value={place.iata}>{place.iata}</MenuItem>
                     )})}
